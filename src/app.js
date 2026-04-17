@@ -28,7 +28,4 @@ app.get("/health", async (req, res) => {
 // app.use("/api/users", userRoutes);
 app.use("/api/runs", runRoutes);
 
-// // ── Error Handler ────────────────────────────────────────────────────────────
-// app.use(errorHandler);
-
 export default app;
