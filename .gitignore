@@ -1,0 +1,16 @@
+# Secrets
+.env
+serviceAccountKey.json
+ 
+# Node
+node_modules/
+npm-debug.log
+package-lock.json
+ 
+# GAE
+.gcloudignore
+ 
+# OS
+.DS_Store
+Thumbs.db
+ 
