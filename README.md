@@ -2,7 +2,7 @@
 
 REST API for the NRC Clone iOS app. Handles run storage, user profiles, and request authentication via Firebase ID tokens.
 
-> **iOS repo**: [stride_ios](https://github.com/kkennethsieu/stride_ios)
+> **iOS repo**: [stride_ios](https://github.com/kkennethsieu/stride-ios)
 
 ---
 
