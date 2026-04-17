@@ -2,6 +2,8 @@
 
 REST API for the NRC Clone iOS app. Handles run storage, user profiles, and request authentication via Firebase ID tokens.
 
+> **iOS repo**: [stride_ios](https://github.com/kkennethsieu/stride_ios)
+
 ---
 
 ## Stack
@@ -34,6 +36,7 @@ src/
 ```
 
 **Key decisions:**
+
 - SwiftData UUID used as Firestore document ID — keeps iOS and backend models in sync
 - All run queries filtered by `userId` — users can only access their own data
 - Ownership check on every mutating endpoint before writing
@@ -47,20 +50,20 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
 
 ### Runs
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/runs` | List all runs for authenticated user |
-| `GET` | `/api/runs/:id` | Get a single run |
-| `POST` | `/api/runs` | Create a run |
-| `PATCH` | `/api/runs/:id` | Update a run (owner only) |
-| `DELETE` | `/api/runs/:id` | Delete a run (owner only) |
+| Method   | Path            | Description                          |
+| -------- | --------------- | ------------------------------------ |
+| `GET`    | `/api/runs`     | List all runs for authenticated user |
+| `GET`    | `/api/runs/:id` | Get a single run                     |
+| `POST`   | `/api/runs`     | Create a run                         |
+| `PATCH`  | `/api/runs/:id` | Update a run (owner only)            |
+| `DELETE` | `/api/runs/:id` | Delete a run (owner only)            |
 
 ### Users
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/users/me` | Get or create user profile |
-| `PATCH` | `/api/users/me` | Update profile fields |
+| Method  | Path            | Description                |
+| ------- | --------------- | -------------------------- |
+| `GET`   | `/api/users/me` | Get or create user profile |
+| `PATCH` | `/api/users/me` | Update profile fields      |
 
 ### Run schema
 
@@ -75,7 +78,7 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
   "createdAt": "<timestamp>",
   "updatedAt": "<timestamp>",
 
-  "distance": 113.70,
+  "distance": 113.7,
   "elapsedTime": 31.57,
   "activeTime": 29,
   "avgPace": 0.255,
@@ -89,15 +92,13 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
 
   "isDeleted": false,
 
-  "coordinates": [
-    { "latitude": 37.33006921, "longitude": -122.02117912 }
-  ],
+  "coordinates": [{ "latitude": 37.33006921, "longitude": -122.02117912 }],
 
   "splits": [
     {
       "id": "6393400B-A478-4853-A988-E6EDC20FC4B9",
       "startTime": "2026-04-17T02:25:42Z",
-      "distance": 113.70,
+      "distance": 113.7,
       "duration": 31.57,
       "avgPace": 0.277,
       "elevation": 0
@@ -106,15 +107,15 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
 }
 ```
 
-| Field | Unit | Notes |
-|---|---|---|
-| `distance` | meters | |
-| `elapsedTime` | seconds | total clock time |
-| `activeTime` | seconds | excludes pauses |
-| `avgPace` / `fastestPace` | min/meter | |
-| `elevationGain` / `elevationLoss` | meters | |
-| `avgHR` / `maxHR` | bpm | 0 if HealthKit unavailable |
-| `isDeleted` | boolean | soft delete flag |
+| Field                             | Unit      | Notes                      |
+| --------------------------------- | --------- | -------------------------- |
+| `distance`                        | meters    |                            |
+| `elapsedTime`                     | seconds   | total clock time           |
+| `activeTime`                      | seconds   | excludes pauses            |
+| `avgPace` / `fastestPace`         | min/meter |                            |
+| `elevationGain` / `elevationLoss` | meters    |                            |
+| `avgHR` / `maxHR`                 | bpm       | 0 if HealthKit unavailable |
+| `isDeleted`                       | boolean   | soft delete flag           |
 
 ### Error format
 
@@ -127,6 +128,7 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
 ## Setup
 
 1. **Clone and install**
+
    ```bash
    git clone https://github.com/kkennethsieu/stride-backend
    cd stride-backend
@@ -134,10 +136,13 @@ All endpoints require `Authorization: Bearer <Firebase ID Token>`.
    ```
 
 2. **Configure environment**
+
    ```bash
    cp .env.example .env
    ```
+
    Get your credentials from:
+
    > Firebase Console → Project Settings → Service Accounts → Generate New Private Key
 
    ```
